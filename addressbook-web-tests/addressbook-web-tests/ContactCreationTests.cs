@@ -42,7 +42,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            GoToHomePage();
+            navigator.GoToHomePage();
             Login(new AccountData("admin", "secret"));
             InitContactCreation();
             ContactData contact = new ContactData("Firstname111", "Lastname111");
