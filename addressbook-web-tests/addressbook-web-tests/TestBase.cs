@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
@@ -95,6 +93,33 @@ namespace WebAddressbookTests
         protected void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
+        }
+        //------------------------
+
+        //Методы для контактов
+        protected void InitContactCreation()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+        }
+
+        protected void FillContactForm(ContactData contact)
+        {
+            driver.FindElement(By.Name("firstname")).Clear();
+            driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
+            driver.FindElement(By.Name("middlename")).Clear();
+            driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
+            driver.FindElement(By.Name("lastname")).Clear();
+            driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
+        }
+
+        protected void SubmitContactCreation()
+        {
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[20]")).Click();
+        }
+
+        protected void ReturnToHomePage()
+        {
+            driver.FindElement(By.LinkText("home")).Click();
         }
         //------------------------
 
