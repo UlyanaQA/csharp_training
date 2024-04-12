@@ -28,10 +28,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Modify(int index, ContactData contact)
+        public ContactHelper Modify(int v, ContactData contact)
         {
-            //SelectContact(v);
-            InitContactModification(index);
+            InitContactModification(v);
             FillContactForm(contact);
             SubmitContactModification();
             ReturnToHomePage();
