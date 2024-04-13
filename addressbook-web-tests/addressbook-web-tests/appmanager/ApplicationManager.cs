@@ -32,6 +32,8 @@ namespace WebAddressbookTests
             contactHelper = new ContactHelper(this);
         }
 
+        /*
+         * Деструктор: пока не работает из-за бага selenium
         ~ApplicationManager()
         {
             try
@@ -43,6 +45,7 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
         }
+        */
 
         public static ApplicationManager GetInstance()
         {
@@ -58,7 +61,6 @@ namespace WebAddressbookTests
             get { return driver; } 
         }
 
-        /*
         public void Stop()
         {
             try
@@ -70,7 +72,6 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
         }
-        */
 
         public LoginHelper Auth
         { 
