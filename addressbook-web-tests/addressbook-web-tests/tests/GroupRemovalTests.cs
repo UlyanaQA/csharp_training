@@ -13,6 +13,8 @@ namespace WebAddressbookTests
         [Test]
         public void GroupRemovalTest()
         {
+            app.Groups.CreateIfNoGroups();
+
             app.Groups.Remove(1);
         }   
     }

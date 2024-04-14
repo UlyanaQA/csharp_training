@@ -9,14 +9,15 @@ using WebAddressbookTests;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
 
         [Test]
         public void ContactModificationTest()
         {
-            ContactData newData = new ContactData("Edit_Name3", "Edit_Lastname3");
-            
+            app.Contacts.CreateIfNoContact();
+
+            ContactData newData = new ContactData("Edit_Name8", "Edit_Lastname7");
             app.Contacts.Modify(1, newData);
         }
     }

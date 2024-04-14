@@ -98,5 +98,19 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("update")).Click();
             return this;
         }
+
+        public void CreateIfNoGroups()
+        {
+            manager.Navigator.GoToGroupsPage();
+
+            if (!IsElementPresent(By.ClassName("group")))
+            {
+                GroupData group = new GroupData("testgroup1");
+                group.Header = "testgroup1";
+                group.Footer = "testgroup1";
+
+                Create(group);
+            }
+        }
     }
 }
