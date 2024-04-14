@@ -20,6 +20,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Create(ContactData contact)
         {
+            manager.Navigator.GoToHomePage();
             InitContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
@@ -30,6 +31,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Modify(int v, ContactData contact)
         {
+            manager.Navigator.GoToHomePage();
             InitContactModification(v);
             FillContactForm(contact);
             SubmitContactModification();
@@ -40,6 +42,7 @@ namespace WebAddressbookTests
 
         public ContactHelper Remove(int v)
         {
+            manager.Navigator.GoToHomePage();
             SelectContact(v);
             RemoveContact();
 
@@ -98,6 +101,8 @@ namespace WebAddressbookTests
 
         public void CreateIfNoContact()
         {
+            manager.Navigator.GoToHomePage();
+
             if ((driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count == 0)
             {
                 ContactData contact = new ContactData("test_firstname", "test_lastname");
