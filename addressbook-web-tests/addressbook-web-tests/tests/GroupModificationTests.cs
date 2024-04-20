@@ -20,7 +20,7 @@ namespace WebAddressbookTests
             newData.Header = null;
             newData.Footer = "eidt_footer3";
 
-            app.Groups.Modify(1, newData);
+            app.Groups.Modify(0, newData);
         }
     }
 }
