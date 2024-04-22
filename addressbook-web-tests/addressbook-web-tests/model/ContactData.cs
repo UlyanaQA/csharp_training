@@ -23,7 +23,7 @@ namespace WebAddressbookTests
             if (Object.ReferenceEquals(other, null))
             { return 1; }
             
-            if (Lastname.CompareTo(other.Lastname) == 1)
+            if (Lastname.CompareTo(other.Lastname) == 0)
             {
                 return Firstname.CompareTo(other.Firstname);
             }
