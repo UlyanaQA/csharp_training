@@ -9,6 +9,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.DevTools.V121.Target;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
@@ -51,7 +52,6 @@ namespace WebAddressbookTests
 
         public ContactHelper InitContactModification(int v)
         {
-            //driver.FindElement(By.XPath($"//*[@title='Edit'][{v+1}]")).Click();
             driver.FindElements(By.Name("entry"))[v]
                 .FindElements(By.TagName("td"))[7]
                 .FindElement(By.TagName("a")).Click();
@@ -176,6 +176,14 @@ namespace WebAddressbookTests
                 MobilePhone = mobilePhone, 
                 WorkPhone = workPhone 
             };
+        }
+
+        public int GetNumberOfSearchResults()
+        {
+            manager.Navigator.GoToHomePage();
+            string text = driver.FindElement(By.TagName("label")).Text;
+            Match m = new Regex(@"\d+").Match(text);
+            return Int32.Parse(m.Value);
         }
     }
 }
