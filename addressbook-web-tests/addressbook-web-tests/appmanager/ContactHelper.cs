@@ -50,6 +50,14 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper InitContactDetails(int v)
+        {
+            driver.FindElements(By.Name("entry"))[v]
+                .FindElements(By.TagName("td"))[6]
+                .FindElement(By.TagName("a")).Click();
+            return this;
+        }
+
         public ContactHelper InitContactModification(int v)
         {
             driver.FindElements(By.Name("entry"))[v]
@@ -184,6 +192,18 @@ namespace WebAddressbookTests
             string text = driver.FindElement(By.TagName("label")).Text;
             Match m = new Regex(@"\d+").Match(text);
             return Int32.Parse(m.Value);
+        }
+
+        public ContactData GetContactInformationFromDetails(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            InitContactDetails(index);
+            string alldetails = driver.FindElement(By.Id("content")).Text;
+
+            return new ContactData
+            {
+                AllDetails = alldetails
+            };   
         }
     }
 }
