@@ -12,6 +12,7 @@ namespace WebAddressbookTests
         private string allPhones;
         private string allDetails;
         private string allEmails;
+        private string allPhonesFromDetails;
 
         public ContactData()
         {
@@ -121,9 +122,9 @@ namespace WebAddressbookTests
         {
             get
             {
-                if (AllPhonesFromDetails != null)
+                if (allPhonesFromDetails != null)
                 {
-                    return AllPhonesFromDetails;
+                    return allPhonesFromDetails;
                 }
                 else
                 {
@@ -136,7 +137,7 @@ namespace WebAddressbookTests
             }
             set
             {
-                AllPhonesFromDetails = value;
+                allPhonesFromDetails = value;
             }
         }
 
