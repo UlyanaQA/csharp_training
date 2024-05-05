@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Xml;
+using System.Xml.Serialization;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 
@@ -28,7 +25,7 @@ namespace WebAddressbookTests
             return groups;
         }
 
-        public static IEnumerable<GroupData> GroupDataFromFile()
+        public static IEnumerable<GroupData> GroupDataFromCsvFile()
         {
             List<GroupData> groups = new List<GroupData>();
             string [] lines = File.ReadAllLines(@"groups.csv");
@@ -45,8 +42,14 @@ namespace WebAddressbookTests
             return groups;
         }
 
+        public static IEnumerable<GroupData> GroupDataFromXmlFile()
+        {
+            return (List<GroupData>) new XmlSerializer(typeof(List<GroupData>))
+                .Deserialize(new StreamReader(@"groups.xml"));
+        }
 
-        [Test, TestCaseSource("GroupDataFromFile")]
+
+        [Test, TestCaseSource("GroupDataFromXmlFile")]
         public void GroupCreationTest(GroupData group)
         {
             List<GroupData> oldGroups = app.Groups.GetGroupList();
