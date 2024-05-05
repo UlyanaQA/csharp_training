@@ -11,6 +11,7 @@ namespace WebAddressbookTests
     {
         private string allPhones;
         private string allDetails;
+        private string allEmails;
 
         public ContactData()
         {
@@ -65,6 +66,12 @@ namespace WebAddressbookTests
 
         public string WorkPhone { get; set; }
 
+        public string Email { get; set; }
+
+        public string Email2 { get; set; }
+
+        public string Email3 { get; set; }
+
         public string AllPhones {
             get
             {
@@ -83,6 +90,33 @@ namespace WebAddressbookTests
             }
         }
 
+        public string HomePhoneDefinition(string homePhone)
+        {
+            if (string.IsNullOrEmpty(homePhone))
+            {
+                return "";
+            }
+            return "H: " + homePhone + "\r\n";
+        }
+
+        public string MobilePhoneDefinition(string mobilePhone)
+        {
+            if (string.IsNullOrEmpty(mobilePhone))
+            {
+                return "";
+            }
+            return "M: " + mobilePhone + "\r\n";
+        }
+
+        public string WorkPhoneDefinition(string workPhone)
+        {
+            if (string.IsNullOrEmpty(workPhone))
+            {
+                return "";
+            }
+            return "W: " + workPhone + "\r\n";
+        }
+
         public string AllPhonesFromDetails
         {
             get
@@ -97,12 +131,31 @@ namespace WebAddressbookTests
                     {
                         return "";
                     }
-                    return (HomePhone + MobilePhone + WorkPhone) + "\r\n";
+                    return (HomePhoneDefinition(HomePhone) + MobilePhoneDefinition(MobilePhone) + WorkPhoneDefinition(WorkPhone)) + "\r\n";
                 }
             }
             set
             {
                 AllPhonesFromDetails = value;
+            }
+        }
+
+        public string AllEmails
+        {
+            get
+            {
+                if (allEmails != null)
+                {
+                    return allEmails;
+                }
+                else
+                {
+                    return (Email + "\r\n" + Email2 + "\r\n" + Email3).Trim();
+                }
+            }
+            set
+            {
+                allEmails = value;
             }
         }
 
@@ -116,8 +169,8 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return (Firstname + " " + Lastname + "\r\n" + Address + "\r\n\r\nH: "
-                            + HomePhone + "\r\nM: " + MobilePhone + "\r\nW: " + WorkPhone + "\r\n\r\n").Trim();
+                    return (Firstname + " " + Lastname + "\r\n" + Address + "\r\n"
+                            + AllPhonesFromDetails + "\r\n" + AllEmails + "\r\n\r\n").Trim();
                 }
             }
             set
