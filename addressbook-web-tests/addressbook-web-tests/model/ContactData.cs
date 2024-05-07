@@ -171,7 +171,7 @@ namespace WebAddressbookTests
                 else
                 {
                     return (Firstname + " " + Lastname + "\r\n" + Address + "\r\n"
-                            + AllPhonesFromDetails + "\r\n" + AllEmails + "\r\n\r\n").Trim();
+                            + AllPhonesFromDetails + AllEmails + "\r\n\r\n").Trim();
                 }
             }
             set
