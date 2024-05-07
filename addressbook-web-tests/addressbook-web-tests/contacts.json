@@ -1,0 +1,50 @@
+[
+  {
+    "Firstname": "H",
+    "Lastname": "=aTS¨=h;",
+    "Middlename": "",
+    "Address": null,
+    "HomePhone": null,
+    "MobilePhone": null,
+    "WorkPhone": null,
+    "Email": null,
+    "Email2": null,
+    "Email3": null,
+    "AllPhones": "",
+    "AllPhonesFromDetails": "",
+    "AllEmails": "",
+    "AllDetails": "H =aTS¨=h;"
+  },
+  {
+    "Firstname": "¤",
+    "Lastname": "_*Ø?\\",
+    "Middlename": "",
+    "Address": null,
+    "HomePhone": null,
+    "MobilePhone": null,
+    "WorkPhone": null,
+    "Email": null,
+    "Email2": null,
+    "Email3": null,
+    "AllPhones": "",
+    "AllPhonesFromDetails": "",
+    "AllEmails": "",
+    "AllDetails": "¤ _*Ø?\\"
+  },
+  {
+    "Firstname": "\"öéñ",
+    "Lastname": "zrG",
+    "Middlename": "",
+    "Address": null,
+    "HomePhone": null,
+    "MobilePhone": null,
+    "WorkPhone": null,
+    "Email": null,
+    "Email2": null,
+    "Email3": null,
+    "AllPhones": "",
+    "AllPhonesFromDetails": "",
+    "AllEmails": "",
+    "AllDetails": "\"öéñ zrG"
+  }
+]
