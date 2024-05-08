@@ -91,6 +91,33 @@ namespace WebAddressbookTests
             }
         }
 
+        public string FirstnameDefinition(string firstname)
+        {
+            if (string.IsNullOrEmpty(firstname))
+            {
+                return "";
+            }
+            return firstname + " ";
+        }
+
+        public string LastnameDefinition(string lastname)
+        {
+            if (string.IsNullOrEmpty(lastname))
+            {
+                return "";
+            }
+            return lastname + " ";
+        }
+
+        public string AddressDefinition(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+            {
+                return "";
+            }
+            return address + "\r\n";
+        }
+
         public string HomePhoneDefinition(string homePhone)
         {
             if (string.IsNullOrEmpty(homePhone))
@@ -170,8 +197,9 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return (Firstname + " " + Lastname + "\r\n" + Address + "\r\n"
-                            + AllPhonesFromDetails + AllEmails + "\r\n\r\n").Trim();
+                    return ((FirstnameDefinition(Firstname) + LastnameDefinition(Lastname)).Trim() + "\r\n" 
+                        + AddressDefinition(Address) + "\r\n" + AllPhonesFromDetails 
+                        + AllEmails).Trim();
                 }
             }
             set
