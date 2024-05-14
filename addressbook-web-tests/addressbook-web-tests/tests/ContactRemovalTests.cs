@@ -11,7 +11,7 @@ namespace WebAddressbookTests
 
 {
     [TestFixture]
-    public class ContactRemovalTests : AuthTestBase
+    public class ContactRemovalTests : ContactTestBase
     {
 
         [Test]
@@ -19,9 +19,10 @@ namespace WebAddressbookTests
         {
             app.Contacts.CreateIfNoContact();
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
+            ContactData toBeRemoved = oldContacts[0];
 
-            app.Contacts.Remove(0);
+            app.Contacts.Remove(toBeRemoved);
             app.Navigator.GoToHomePage();
 
             Assert.AreEqual(app.Contacts.GetContactCount(), oldContacts.Count - 1);
