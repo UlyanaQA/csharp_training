@@ -234,5 +234,13 @@ namespace WebAddressbookTests
                 return (from c in db.Contacts.Where(x => x.Deprecated == null) select c).ToList();
             }
         }
+
+        public static string MaxContactId()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts.Where(x => x.Deprecated == null) select c).Max(x => x.Id);
+            }
+        }
     }
 }
