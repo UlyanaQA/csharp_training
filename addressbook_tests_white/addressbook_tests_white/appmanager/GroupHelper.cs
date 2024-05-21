@@ -25,7 +25,7 @@ namespace addressbook_tests_white
         {
             Window dialog = OpenGroupsDialog();
             dialog.Get<Button>("uxNewAddressButton").Click();
-            TextBox textbox = (TextBox) dialog.Get(SearchCriteria.ByControlType(ControlType.Edit));
+            TextBox textbox = (TextBox)dialog.Get(SearchCriteria.ByControlType(ControlType.Edit));
             textbox.Enter(newGroup.Name);
             Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
             CloseGroupsDialog(dialog);
@@ -55,9 +55,42 @@ namespace addressbook_tests_white
                     Name = item.Text
                 });
             }
-            
+
             CloseGroupsDialog(dialog);
             return list;
+        }
+
+        public void Remove(GroupData toBeRemoved)
+        {
+            using (var dialogue = OpenGroupsDialog())
+            {
+                var tree = dialogue.Get<Tree>("uxAddressTreeView");
+                var root = tree.Nodes[0];
+
+                foreach (var node in root.Nodes)
+                {
+                    if (node.Text == toBeRemoved.Name)
+                    {
+                        node.Select();
+                        dialogue.Get<Button>("uxDeleteAddressButton").Click();
+                        dialogue.Get<Button>("uxOKAddressButton").Click();
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void CreateIfNoGroup()
+        {
+            if (GetGroupList().Count <= 1)
+            {
+                GroupData group = new GroupData()
+                {
+                    Name = "test"
+                };
+
+                Add(group);
+            }
         }
     }
 }
