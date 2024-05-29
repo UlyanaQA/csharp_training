@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 using System.Threading;
 
 namespace mantis_tests
@@ -16,14 +11,20 @@ namespace mantis_tests
         protected string baseURL;
         public RegistrationHelper Registration { get; set; }
         public FtpHelper Ftp { get; set; }
+        public LoginHelper Auth { get; set; }
+        public ManagementMenuHelper Navigation { get; set; }
+        public ProjectManagementHelper Project { get; set; }
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost/mantisbt-1.3.20";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
+            Auth = new LoginHelper(this);
+            Navigation = new ManagementMenuHelper(this, baseURL);
+            Project = new ProjectManagementHelper(this);
         }
 
         /*
@@ -46,7 +47,7 @@ namespace mantis_tests
             if (! app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://localhost/mantis-1.2.7/login_page.php";
+                newInstance.driver.Url = "http://localhost/mantisbt-1.3.20/login_page.php";
                 app.Value = newInstance;
             }
             return app.Value; 
@@ -67,10 +68,6 @@ namespace mantis_tests
             {
                 // Ignore errors if unable to close the browser
             }
-        }
-
-        
-
-        
+        }  
     }
 }
