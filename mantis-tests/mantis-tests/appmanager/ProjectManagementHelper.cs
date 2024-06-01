@@ -68,12 +68,12 @@ namespace mantis_tests
 
         private void SubmitRemove()
         {
-            driver.FindElement(By.XPath("//input[@value='DeleteAccount Project']")).Click();
+            driver.FindElement(By.XPath("//input[@value='Delete Project']")).Click();
         }
 
         private void Remove()
         {
-            driver.FindElement(By.XPath("//input[@value='DeleteAccount Project']")).Click();
+            driver.FindElement(By.XPath("//input[@value='Delete Project']")).Click();
         }
     }
 }

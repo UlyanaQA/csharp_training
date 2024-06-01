@@ -9,17 +9,23 @@ namespace mantis_tests
         [Test]
         public void ProjectCreationTest()
         {
-            List<ProjectData> oldProjects = app.Project.GetProjects();
+            AccountData account = new AccountData()
+            {
+                Name = "administrator",
+                Password = "root"
+            };
+
+            List<ProjectData> oldProjects = app.API.GetProjects(account);
             ProjectData newProject = new ProjectData("Project" + TestBase.GenerateRandomString(5));
 
             app.Project.Create(newProject);
 
-            List<ProjectData> newProjects = app.Project.GetProjects();
+            List<ProjectData> newProjects = app.API.GetProjects(account);
             oldProjects.Add(newProject);
             oldProjects.Sort();
             newProjects.Sort();
 
-            Assert.AreEqual(oldProjects.Count, newProjects.Count);
+            Assert.AreEqual(oldProjects, newProjects);
         }
     }
 }
